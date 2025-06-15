@@ -13,11 +13,7 @@ class DeskBookingViewModel: ObservableObject {
         self.bookingService = bookingService
     }
 
-    func book(desk: Desk) {
-        guard let user = AuthService().currentUser() else {
-            error = "No user"
-            return
-        }
+    func book(desk: Desk, user: User) {
         let start = Date()
         let end = Calendar.current.date(byAdding: .hour, value: 1, to: start) ?? start.addingTimeInterval(3600)
         isLoading = true

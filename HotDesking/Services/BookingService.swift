@@ -13,7 +13,7 @@ class BookingService {
         Future { promise in
             do {
                 let booking = Booking.create(start: start, end: end, user: user, desk: desk, context: self.context)
-                try self.context.save()
+                CoreDataStack.shared.save()
                 promise(.success(booking))
             } catch {
                 promise(.failure(error))
@@ -25,7 +25,7 @@ class BookingService {
         Future { promise in
             do {
                 self.context.delete(booking)
-                try self.context.save()
+                CoreDataStack.shared.save()
                 promise(.success(()))
             } catch {
                 promise(.failure(error))

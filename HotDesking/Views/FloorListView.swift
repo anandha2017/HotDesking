@@ -4,6 +4,7 @@ import CoreData
 struct FloorListView: View {
     let office: Office
     @FetchRequest var floors: FetchedResults<Floor>
+    @EnvironmentObject var loginViewModel: LoginViewModel
 
     init(office: Office) {
         self.office = office
@@ -12,7 +13,7 @@ struct FloorListView: View {
 
     var body: some View {
         List(floors, id: \.self) { floor in
-            NavigationLink(destination: DeskListView(floor: floor)) {
+                NavigationLink(destination: DeskListView(floor: floor).environmentObject(loginViewModel)) {
                 Text("Floor \(floor.number)")
             }
         }

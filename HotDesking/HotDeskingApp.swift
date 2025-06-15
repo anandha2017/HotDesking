@@ -2,10 +2,12 @@ import SwiftUI
 
 @main
 struct HotDeskingApp: App {
+    let persistenceController = CoreDataStack.shared
+
     var body: some Scene {
         WindowGroup {
-            LoginView()
-                .environment(\.managedObjectContext, CoreDataStack.shared.context)
+            MainAppView()
+                .environment(\.managedObjectContext, persistenceController.context)
         }
     }
 }

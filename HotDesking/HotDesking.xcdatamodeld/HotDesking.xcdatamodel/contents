@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Booking" representedClassName="Booking" syncable="YES">
+        <attribute name="endTime" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="startTime" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="desk" maxCount="1" deletionRule="Nullify" destinationEntity="Desk" inverseName="bookings" inverseEntity="Desk"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="bookings" inverseEntity="User"/>
+    </entity>
+    <entity name="Desk" representedClassName="Desk" syncable="YES">
+        <attribute name="amenities" optional="YES" attributeType="String"/>
+        <attribute name="identifier" attributeType="String"/>
+        <attribute name="status" attributeType="String"/>
+        <attribute name="x" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="y" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="bookings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Booking" inverseName="desk" inverseEntity="Booking"/>
+        <relationship name="floor" maxCount="1" deletionRule="Nullify" destinationEntity="Floor" inverseName="desks" inverseEntity="Floor"/>
+    </entity>
+    <entity name="Floor" representedClassName="Floor" syncable="YES">
+        <attribute name="layoutImage" optional="YES" attributeType="Binary"/>
+        <attribute name="number" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="desks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Desk" inverseName="floor" inverseEntity="Desk"/>
+        <relationship name="office" maxCount="1" deletionRule="Nullify" destinationEntity="Office" inverseName="floors" inverseEntity="Office"/>
+    </entity>
+    <entity name="Office" representedClassName="Office" syncable="YES">
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="floors" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Floor" inverseName="office" inverseEntity="Floor"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="email" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="role" optional="YES" attributeType="String"/>
+        <relationship name="bookings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Booking" inverseName="user" inverseEntity="Booking"/>
+    </entity>
+</model>

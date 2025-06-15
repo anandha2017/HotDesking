@@ -40,7 +40,7 @@ class AuthService: AuthServiceProtocol {
             do {
                 try KeychainService.save(key: self.keychainKey, data: Data(password.utf8))
                 let user = User.create(email: email, name: name, role: "user", context: self.context)
-                try self.context.save()
+                CoreDataStack.shared.save()
                 self.user = user
                 promise(.success(user))
             } catch {
