@@ -21,7 +21,7 @@ class DataSeedingService {
             // Create OSB offices
             let bangaloreOffice = Office.create(name: "OSB India Bangalore", latitude: 12.9716, longitude: 77.5946, context: context)
             let hyderabadOffice = Office.create(name: "OSB India Hyderabad", latitude: 17.3850, longitude: 78.4867, context: context)
-            let chathamObservatoryOffice = Office.create(name: "OSB UK Chatham Observatory", latitude: 51.3789, longitude: 0.5208, context: context)
+            let chathamObservatoryOffice = Office.create(name: "OSB UK Chatham The Observatory", latitude: 51.3789, longitude: 0.5208, context: context)
             let chathamOSBHouseOffice = Office.create(name: "OSB UK Chatham OSB House", latitude: 51.3789, longitude: 0.5208, context: context)
             let wolverhamptonOffice = Office.create(name: "OSB UK Wolverhampton Charter Court", latitude: 52.5833, longitude: -2.1333, context: context)
 
